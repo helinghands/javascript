@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var table1 = document.getElementById("table1");
+            var button = document.getElementById("btn1");
+            var name = document.getElementById("name");
+            var age = document.getElementById("age");
+            var id = table1.tBodies[0].rows.length;
+            button.onclick = function(){
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                td.innerHTMl = id++;
+                tr.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTMl = name.value;
+                tr.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTMl = age.value;
+                tr.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTMl = '<a href="javascript:;">删除</a>';
+                tr.appendChild(td);
+                
+                td.getElementsByTagName('a')[0].onclick = function(){
+                    table1.tBodies[0].removeChild(this.parentNode.parentNode);
+                };
+                table1.tBodies[0].appendChild(tr);
+            };
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name">
+    年龄：<input type="text" id="age">
+    <input type="button" id="btn1" value="添加">
+    <table border="1" width="500" id="table1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>chenliang</td>
+                <td>13</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>allan</td>
+                <td>20</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                    <td>3</td>
+                    <td>allan</td>
+                    <td>21</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

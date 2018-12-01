@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-size: 50px;
+        }
+        div{
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function toDouble(n){
+            if(n<10){
+                return "0" + n;
+            }else{
+                return ''+n;
+            }
+        }
+        window.onload = function(){
+            var img = document.getElementsByTagName("img");
+            function time(){
+                var date = new Date();
+                var str = toDouble(date.getHours()) + toDouble(date.getMinutes()) + toDouble(date.getSeconds());
+                for(var i=0;i<img.length;i++){
+                    // 使用charAt()函数解决兼容问题，等价于[]
+                    img[i].src = '../images/0' + str.charAt(i) + '.png';
+                }
+            };
+            setInterval(time,1000);
+            // 为了解决最开始那一秒的全为1111的效果，首先调用一次方法
+            time();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img src="../images/01.png" alt="">
+        <img src="../images/01.png" alt="">
+        :
+        <img src="../images/01.png" alt="">
+        <img src="../images/01.png" alt="">
+        :
+        <img src="../images/01.png" alt="">
+        <img src="../images/01.png" alt="">
+    </div>
+</body>
+</html>

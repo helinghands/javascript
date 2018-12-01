@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 484px;
+            height: 121px;
+            margin: 100px auto;
+            position: relative;
+            background-color: red;
+            overflow: hidden;
+        }
+        #div1 ul{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #div1 ul li{
+            float: left;
+            width: 121px;
+            height: 121px;
+            list-style:none;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1");
+            var ul = div1.getElementsByTagName("ul")[0];
+            var li = ul.getElementsByTagName("li");
+            // 相当于制作两个一样的ul，效果即是两个一样的四张图片总共八张图片并排
+            ul.innerHTML = ul.innerHTML + ul.innerHTML;
+            // 设置ul的宽度为8个li的宽度
+            ul.style.width = li[0].offsetWidth * li.length + 'px';
+            var speed = 2;
+            function move(){
+                /*
+                // 向左滚动
+                if(ul.offsetLeft<-(ul.offsetWidth/2)){
+                    // 当第二个第一张图滚动到最左边时就把整体往回拉
+                    ul.style.left = 0 + "px";
+                }
+                ul.style.left = ul.offsetLeft - 2 + "px";
+                */
+                if(ul.offsetLeft<-(ul.offsetWidth/2)){
+                    // 当第二个第一张图滚动到最左边时就把整体往回拉
+                    ul.style.left = 0 + "px";
+                }
+                // 向右滚动
+                if(ul.offsetLeft>0){
+                    // 当第二个第一张图滚动到最右边时就把整体往回拉
+                    ul.style.left = -ul.offsetWidth/2 + "px";
+                }
+                ul.style.left = ul.offsetLeft + speed + "px";
+            }
+            // 设置定时器
+            var time = setInterval(move,30);
+            div1.onmousemove = function(){
+                clearInterval(time);
+            }
+            div1.onmouseout = function(){
+                time = setInterval(move,30);
+            }
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            btn1.onclick = function(){
+                speed = -2;
+            }
+            btn2.onclick = function(){
+                speed = +2;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn1" value="向左走">
+    <input type="button" id="btn2" value="向右走">
+    <div id="div1">
+        <ul>
+            <li><img src="../images/00.png" alt=""></li>
+            <li><img src="../images/01.png" alt=""></li>
+            <li><img src="../images/02.png" alt=""></li>
+            <li><img src="../images/03.png" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

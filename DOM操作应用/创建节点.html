@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btn1 = document.getElementById("btn1");
+            var text = document.getElementById("text");
+            var ul = document.getElementById("ul1");
+            btn1.onclick = function(){
+                // 创建节点
+                var li = document.createElement("li");
+                var Oli = document.getElementsByTagName("li");
+                li.innerHTML = text.value;
+                // 父元素.appendChild(子节点);
+                // 插入元素insertBefore(节点，原有节点);在已有元素前插入
+                // 兼容问题解决
+                if(Oli.length>0){
+                    ul.insertBefore(li,Oli[0]);//用于将新的元素放置最前面
+                }else{
+                    ul.appendChild(li);
+                }
+                
+            };
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="text">
+    <input type="button" id="btn1" value="创建li">
+    <ul id="ul1"></ul>
+</body>
+</html>

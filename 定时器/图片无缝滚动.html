@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top:20px;
+            left:0;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            setInterval(function(){
+                var div = document.getElementById("div1");
+                div.style.left = div.offsetLeft + 10 + 'px';
+            },30);
+        }
+    </script>
+</head>
+<body>
+        <!-- offsetLeft:获取当前对象的左边距 -->
+        <!-- offsetTop:获取当前对象的上边距-->
+        <!-- offsetWidth:获取当前对象的宽度-->
+        <!-- offsetHeight:获取当前对象的高度-->
+    <div id="div1"</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            float: left;
+            margin: 10px;
+        }
+        #div1{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+        #div2{
+            width: 250px;
+            height: 180px;
+            background-color: #ccc;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            var time = null;
+            /*
+            // 鼠标从div2移入div1后关闭定时器
+            div1.onmouseover = function(){
+                clearTimeout(time);
+                div2.style.display = 'block';
+            };
+            // 鼠标从div1离开时，div2隔一秒消失
+            div1.onmouseout = function(){
+                time = setTimeout(function(){
+                    div2.style.display = 'none';
+                },1000);
+            };
+            // 鼠标移入div2时，关闭定时器
+            div2.onmouseover = function(){
+                clearTimeout(time);
+            };
+            // 使用后移入div2时，隔1秒消失
+            div2.onmouseout = function(){
+                time = setTimeout(function(){
+                    div2.style.display = 'none';
+                },1000);
+            };
+            */
+            // 方法合并
+            div1.onmouseover = div2.onmouseover = function(){
+                clearTimeout(time);
+                div2.style.display = 'block';
+            };
+            // 鼠标从div1离开时，div2隔一秒消失
+            div1.onmouseout = div2.onmouseout = function(){
+                time = setTimeout(function(){
+                    div2.style.display = 'none';
+                },1000);
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .calender{
+            width: 300px;
+            height: 500px;
+            background-color: #ccc;
+            margin: 50px auto;
+        }
+        ul{
+            padding-left: 0;
+            position: relative;
+            width: 300px;
+            height: 320px;
+        }
+        li{
+            list-style: none;
+            height: 65px;
+            width: 80px;
+            float: left;
+            margin-left: 15px;
+            background-color: black;
+            margin-top: 15px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        .div{
+            width: 270px;
+            height: 150px;
+            background-color: #999;
+            margin-left: 15px;
+        }
+        .active{
+            background-color: white;
+            color: #f1240e;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1");
+            var li = document.getElementsByTagName("li");
+            var div = div1.getElementsByTagName("div")[0];
+            var calender = ['asdasdasdassdfsdf','asdasdasdasfsdfsdf','sdfsdfsdfsdfsdf','sdfsdfhdfhdfhdf','dfhdfhdfhdfhd'];
+            for(var i=0;i<li.length;i++){
+                li[i].index = i;
+                li[i].onmouseover = function(){
+                    for(var i=0;i<li.length;i++){
+                        li[i].className = '';
+                    }
+                    this.className = 'active';
+                    div.innerHTML = '<h2>' + (this.index + 1) + '月活动</h2><p>' + calender[this.index] + '</p>';
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="calender" id="div1">
+        <ul>
+            <li><h2><p>JAN</p></h2></li>
+            <li><h2><p>FER</p></h2></li>
+            <li><h2><p>MAR</p></h2></li>
+            <li><h2><p>APR</p></h2></li>
+            <li><h2><p>MaY</p></h2></li>
+            <li><h2><p>JUN</p></h2></li>
+            <li><h2><p>Jul</p></h2></li>
+            <li><h2><p>AUG</p></h2></li>
+            <li><h2><p>OCT</p></h2></li>
+            <li><h2><p>SEP</p></h2></li>
+            <li><h2><p>NOV</p></h2></li>
+            <li><h2><p>DEC</p></h2></li>
+        </ul>
+        <div class="div" id="div">
+            
+        </div>
+    </div>
+</body>
+</html>

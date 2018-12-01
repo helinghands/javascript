@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background-color: #c0c0c0;
+            border:1px solid lightgray;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- onmouseover鼠标移入时触发事件 -->
+    <!-- onmouseout鼠标离开的时候触发事件 -->
+    <input type="checkbox" onmouseover="document.getElementById('div1').style.display = 'block';"
+        onmouseout="document.getElementById('div1').style.display = 'none';">
+    <div id="div1">
+        为了您的信息安全......
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>

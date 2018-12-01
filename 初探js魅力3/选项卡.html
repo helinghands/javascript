@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 .active{
+            background-color: yellow;
+        }
+        #div1 div{
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            border: 1px solid #999;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById("div1");
+            var button = oDiv.getElementsByTagName("input");
+            var div = oDiv.getElementsByTagName("div");
+            for(var i=0;i<button.length;i++){
+                // 为每个按钮添加一个index属性，方便后面选择当前该显示的div
+                button[i].index = i;
+                button[i].onclick = function(){
+                    // 清除其他button的className以达到背景不变成黄色
+                    for(var j=0;j<button.length;j++){
+                        button[j].className = '';
+                    }
+                    // 使用this对当前按钮添加className
+                    this.className = 'active';
+
+                    for(var j=0;j<div.length;j++){
+                        div[j].style.display = '';
+                    }
+                    // 显示当前的div
+                    div[this.index].style.display = 'block';
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input type="button" value="教育" class="active">
+        <input type="button" value="培训">
+        <input type="button" value="招生">
+        <input type="button" value="出国"><br>
+        <div style="display:block;">成都学院原名“成都大学”，由成都市人民政府举办，实行“省市共建、以市为主”的办学体制。</div>
+        <div>学校建校之初即为本科院校，1983年因响应高等教育结构改革试点改办成专科层次职业大学</div>
+        <div>2003年经教育部批准恢复为全日制普通本科高等学校，更名为成都学院</div>
+        <div>保留成都大学校名，俟条件具备后再按程序更名为成都大学</div>
+    </div>
+</body>
+</html>

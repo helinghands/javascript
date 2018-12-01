@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="changeColor('green')">变绿</button>
+    <button onclick="changeColor('yellow')">变黄</button>
+    <button onclick="changeColor('black')">变黑</button>
+    <div id="div1"></div>
+    <script>
+        function changeColor(str){
+            var div1 = document.getElementById("div1");
+            div1.style.backgroundColor = str;
+        }
+    </script>
+</body>
+</html>

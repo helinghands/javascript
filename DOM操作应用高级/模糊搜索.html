@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var table1 = document.getElementById("table1");
+            var btn1 = document.getElementById("btn1");
+            var name = document.getElementById("name");
+            btn1.onclick = function(){
+                for(var i=0;i<table1.tBodies[0].rows.length;i++){
+                    var cell = table1.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var text = name.value.toLowerCase();
+                    // search方法实现模糊搜索
+                    if(cell.search(text)!=-1){
+                        table1.tBodies[0].rows[i].style.backgroundColor = 'red';
+                    }else{
+                        table1.tBodies[0].rows[i].style.backgroundColor = '';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name">
+    <input type="button" id="btn1" value="搜索">
+    <table border="1" width="500" id="table1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>chenliang</td>
+                <td>13</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>allan</td>
+                <td>20</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                    <td>3</td>
+                    <td>allan</td>
+                    <td>21</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

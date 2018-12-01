@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var ul = document.getElementById("ul1");
+            var  a = document.getElementsByTagName("a");
+            for(var i=0;i<a.length;i++){
+                a[i].onclick = function(){
+                    this.parentNode.style.display = 'none';
+                }
+            }
+            function getByClass(oparent,sclass){
+                var result = [];
+                var aEle = oparent.getElementsByTagName("*");
+                for(var i=0;i<aEle.length;i++){
+                    if(aEle[i].class == sclass){
+                        result.push(aEle[i]);
+                    }
+                }
+                return result;
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li>奥术大师大所大<a href="javascript:;">隐藏</a></li>
+        <li>沙发斯蒂芬是地方<a href="javascript:;">隐藏</a></li>
+        <li>豆腐干豆腐豆腐<a href="javascript:;">隐藏</a></li>
+        <li>东方红东方红<a href="javascript:;">隐藏</a></li>
+    </ul>
+</body>
+</html>

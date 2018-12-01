@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var ul1 = document.getElementById("ul1");
+            /*
+            // 使用该方法页面会卡一下
+            for(var i=0;i<10000;i++){
+                var li = document.createElement("li");
+                ul1.appendChild(li);
+            }*/
+            // 使用文档碎片解决该问题
+            var frag = document.createDocumentFragment();
+            for(var i=0;i<10000;i++){
+                var li = document.createElement("li");
+                frag.appendChild(li);
+            }
+            ul1.appendChild(frag);
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1"></ul>
+</body>
+</html>

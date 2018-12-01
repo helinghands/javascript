@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var table1 = document.getElementById("table1");
+            // alert(table1.getElementsByTagName('tbody')[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML);
+            var oldColor = '';
+            for(var i=0;i<table1.tBodies[0].rows.length;i++){
+                table1.tBodies[0].rows[i].onmouseover = function(){
+                    // 将原来的颜色保存起来
+                    oldColor = this.style.backgroundColor;
+                    this.style.backgroundColor = '#ccc';
+                };
+                table1.tBodies[0].rows[i].onmouseout = function(){
+                    this.style.backgroundColor = oldColor;
+                };
+                if(i%2 == 0){
+                    table1.tBodies[0].rows[i].style.backgroundColor = 'red';
+                }else{
+                    table1.tBodies[0].rows[i].style.backgroundColor = 'blue';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1" width="500" id="table1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>chenliang</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>allan</td>
+                <td>20</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
