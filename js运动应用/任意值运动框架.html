@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 20px;
+            float: left;
+            border: 10px solid black;
+            font-size: 15px;
+            opacity: 0.8;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div = document.getElementsByTagName('div');
+            for(var i=0;i<div.length;i++){
+                div[i].timer = null;
+                div[i].onmouseover = function(){
+                    startMove(this, 'opacity',40);
+                }
+            }
+            for(var i=0;i<div.length;i++){
+                div[i].timer = null;
+                div[i].onmouseout = function(){
+                    startMove(this, 'opacity',80);
+                }
+            }
+        }
+        function getStyle(obj,name){
+            if(obj.currentStyle){
+                return obj.currentStyle[name];
+            }else{
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        function startMove(obj,attr,iTarget){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                var current = 0;
+                if(attr == 'opacity'){
+                    current = Math.round(parseFloat(getStyle(obj,attr))*100);
+                }else{
+                    current = parseInt(getStyle(obj,attr));
+                }
+                var speed = (iTarget-current)/6;
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                if(current == iTarget){
+                    clearInterval(obj.timer);
+                }else{
+                    if(attr == 'opacity'){
+                        obj.style.opacity = (current + speed)/100;
+                        obj.style.filter = 'alpha(opacity=' + current + speed + ')';
+                        document.getElementById("text1").value = obj.style.opacity;
+                    }else{
+                        obj.style[attr] = current + speed + 'px';
+                    }
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <div>dasdasd</div>
+    <div></div>
+    <div></div>
+    <br>
+    <input type="text" id="text1">
+</body>
+</html>

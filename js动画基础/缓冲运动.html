@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 600px;
+            top: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oButton = document.getElementById("btn1");
+            oButton.onclick = function(){
+                startMove();
+            }
+        }
+        function startMove(){
+            var timer = null;
+            var oDiv = document.getElementById("div1");
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed = (300 - oDiv.offsetLeft)/10;
+                speed = speed > 0?Math.ceil(speed):Math.floor(speed)
+                // 避免出现小数形式，则就向上取整Math.ceil(speed)
+                oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn1" value="开始运动">
+    <div id="div1"></div>
+</body>
+</html>

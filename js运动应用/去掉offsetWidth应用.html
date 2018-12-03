@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            height: 200px;
+            border: 10px solid red;
+            background-color: black;
+        }
+    </style>
+    <script>
+        function getStyle(obj,name){
+            if(obj.currentStyle){
+                return obj.currentStyle[name];
+            }else{
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        window.onload = function(){
+            var div = document.getElementsByTagName('div');
+            for(var i=0;i<div.length;i++){
+                div[i].timer = null;
+                div[i].onmouseover = function(){
+                    startMove(this,200);
+                }
+            }
+        }
+        function startMove(obj,iTarget){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                if(parseInt(getStyle(obj,'width')) == iTarget){
+                    clearInterval(obj.timer);
+                }else{
+                    obj.style.width = parseInt(getStyle(obj,'width'))- 1 + 'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

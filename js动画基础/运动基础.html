@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn1 = document.getElementById("btn1");
+            var oDiv = document.getElementById("div1");
+            var timer = null;
+            var speed = 10;
+            // 此处使用clearIntelval()是为了保证整个过程只有一个定时器开着，即是避免不断点击按钮而导致速度加快的效果
+            clearInterval(timer);
+            btn1.onclick = function(){
+                timer = setInterval(function(){
+                    // 当左边距离等于300时关闭定时器
+                    if(oDiv.offsetLeft == 300){
+                        clearInterval(timer);
+                    }
+                    // 改变运动速度即可修改speed大小
+                    // 使用else为了避免到达300后再点击按钮发生运动
+                    else{
+                        oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                    }
+                },50);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="开始运动" id="btn1">
+    <div id="div1"></div>
+</body>
+</html>
